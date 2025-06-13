@@ -173,9 +173,9 @@ of the NS resource records within the RRSet has an empty target.
 
 ~~~~
         KITTEN  3600  IN  NS  A.CAT-SERVERS.EXAMPLE.
-                      IN  NS  B.CAT-SERVERS.EXAMPLE.
-                      IN  NS  .                        ; unusual
-                      IN  NS  C.CAT-SERVERS.EXAMPLE.
+                          NS  B.CAT-SERVERS.EXAMPLE.
+                          NS  .                        ; unusual
+                          NS  C.CAT-SERVERS.EXAMPLE.
 ~~~~
 
 This NS RRSet as a whole does not encode a delegation to nowhere,
