@@ -32,15 +32,14 @@ author:
     organization: Cloudflare
     email: jabley@cloudflare.com
  -
-    fullname: Warren Kumari
-    organization: Google, Inc.
-    email: warren@kumari.net
- -
     fullname: Wes Hardaker
     organization: USC/ISI
     email: ietf@hardakers.net
-
-
+ -
+    fullname: Warren Kumari
+    organization: Google, Inc.
+    email: warren@kumari.net
+ 
 normative:
 
 informative:
