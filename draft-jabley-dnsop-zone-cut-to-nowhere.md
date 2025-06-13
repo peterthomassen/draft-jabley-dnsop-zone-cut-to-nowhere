@@ -314,7 +314,9 @@ any corresponding operational direction to the IANA, however.
 
 --- back
 
-# 
+# Experiments {#experiments}
+
+Wes should commit acts of science, here.
 
 # Acknowledgments
 {:numbered="false"}
@@ -330,6 +332,3 @@ such book, although he did publish the novel "Three Days to Never" in 2006 and m
 feature ambiguous realities, the supernatural and excessive drinking. Memory is a
 tricky thing.
 
-# Experiments {#experiments}
-
-Wes should write science here.
