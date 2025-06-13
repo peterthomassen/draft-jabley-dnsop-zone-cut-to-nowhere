@@ -164,7 +164,7 @@ includes the child zone in its namespace.
         ; but in another namespace
 
         PUPPY  3600  IN  DS  [...]
-        PUPPY            NS  .
+                         NS  .
 ~~~~
 
 An NS RRSet in a parent zone which includes multiple NS resource
