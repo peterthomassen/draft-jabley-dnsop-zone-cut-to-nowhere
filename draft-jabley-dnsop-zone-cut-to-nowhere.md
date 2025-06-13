@@ -350,7 +350,10 @@ This document updates {{Section 3.3.11 of RFC1035}} as follows:
 > `NSDNAME` MAY be specified as a single, zero-length label. An
 > NS RRSet that consists of a single NS resource record with empty
 > `NSDNAME` is used to indicate that a zone cut exists without
-> indicating any authoritative nameservers for the child zone.
+> providing any authoritative nameservers for the child zone. The
+> purpose of such an RRSet is to confirm that the child zone
+> exists, but in a different namespace from the parent (e.g. in a
+> private namespace).
 
 # Other Uses of the Empty Name in the DNS {#other_uses}
 
