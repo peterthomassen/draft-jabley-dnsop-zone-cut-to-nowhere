@@ -154,13 +154,15 @@ and cache a DNSSEC trust anchor for the child zone, for use when
 it is able to receive a signed response from a nameserver that
 includes the child zone in its namespace.
 
+~~~~
         $ORIGIN EXAMPLE.ORG.
-        
+
         ; the signed zone CHILD.EXAMPLE.ORG exists,
         ; but in another namespace
 
         CHILD  3600  IN  DS  [...]
         CHILD            NS  .
+~~~~
 
 An NS RRSet in a parent zone which includes multiple NS resource
 records is not a delegation to nowhere, even if the target of one
@@ -224,8 +226,8 @@ aware that the `CORP.EXAMPLE.COM` zone is served by those internal
 nameservers, such that queries sent from devices inside the company's
 network can resolve names in the `CORP.EXAMPLE.COM` domain.
 
+~~~~
         $ORIGIN CORP.EXAMPLE.COM.
-
         ; internal zone only served in our internal network
 
         @      3600  IN  SOA   [...]
@@ -251,6 +253,7 @@ network can resolve names in the `CORP.EXAMPLE.COM` domain.
         ; as BACKBONE-SW.CORP.EXAMPLE.COM
 
         BACKBONE-SW  A     192.168.2.65
+~~~~
 
 The company publishes an EXAMPLE.COM zone on nameservers that are
 general reachable over the Internet -- that is, the nameservers are
@@ -259,46 +262,48 @@ zone to those nameservers. The EXAMPLE.COM zone includes names that
 the company wants clients to be able to resolve regardless of what
 network they are connected to.
 
+~~~~
         $ORIGIN EXAMPLE.COM.
-        
+
         ; the public zone EXAMPLE.COM is published to the Internet
-        
+
         @      3600  IN  SOA   [...]
-        
+
         ; the public zone EXAMPLE.COM is served by the nameservers
         ; NS1.EXAMPLE.COM and NS2.EXAMPLE.COM which are reachable
         ; over the Internet
-        
+
                      NS    NS1
                      NS    NS2
-        
+
         ; Internet mail for EXAMPLE.COM is handled by the server
         ; MAIL.EXAMPLE.COM
-        
+
                      MX    10 MAIL.EXAMPLE.COM.
-        
+
         ; The public nameservers NS1.EXAMPLE.COM and NS2.EXAMPLE.COM
-        
+
         NS1          A     192.0.2.25
         NS1          AAAA  2001:db8:e0::2a
-        
+
         NS2          A     192.0.2.27
         NS2          AAAA  2001:db8:e0::2b
-        
+
         ; MAIL.EXAMPLE.COM and WWW.EXAMPLE.COM are intended to be used
         ; from anywhere, not just by internal clients, so they are
         ; named in the global namespace
-        
+
         MAIL         A     192.0.2.41
         MAIL         A     2001:db8:e0::f1
-        
+
         WWW          A     192.0.2.58
         WWW          AAAA  2001:db8:e0::5e
-        
+
         ; CORP.EXAMPLE.COM is our internal namespace. Delegate the
         ; corresponding zone to nowhere
-        
+
         CORP         NS    .
+~~~~
 
 ## General Purpose Top-Level Domain for Internal Namespaces
 
@@ -317,12 +322,14 @@ since there is no single trust anchor that could be used to provide
 a secure delegation to zones in multiple namespaces that have
 different, non-cooperating administrators.
 
+~~~~
         $ORIGIN .
-        
+
         ; the INTERNAL top-level domain is delegated to nowhere, to
         ; facilitate its use in private namespaces
-        
+
         INTERNAL  172800  IN  NS  .
+~~~~
 
 # Updates to RFC 1035
 
