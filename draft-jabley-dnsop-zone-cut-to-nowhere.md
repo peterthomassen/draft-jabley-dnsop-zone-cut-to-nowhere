@@ -314,26 +314,23 @@ different, non-cooperating administrators.
 ~~~~
 $ORIGIN .
 
-...
-
 ; the INTERNAL top-level domain is delegated to nowhere, to
 ; facilitate its use in private namespaces
 INTERNAL  172800  IN  NS  .
-...
 ~~~~
 
 # Updates to RFC 1035
 
 This document updates {{!RFC1035}} section 3.3.11 as follows:
 
-> NSDNAME MAY be specified as a single, empty label. Such an NSDNAME
-> indicates that a zone cut exists but that the authoritative
-> nameservers for the child zone are not specified.
+> `NSDNAME` MAY be specified as a single, empty label to indicate
+> that a zone cut exists but that the authoritative nameservers for
+> the child zone are not specified.
 
 # Other Uses of the Empty Name in the DNS {#other_uses}
 
 In {{?RFC7505}} an MX resource record with an empty target (called
-"EXCHANGE" in {{!RFC1035}}) is specified to mean that the corresponding
+`EXCHANGE` in {{!RFC1035}}) is specified to mean that the corresponding
 domain name does not accept e-mail. In effect, the empty field is
 used to indicate that there is no host available to use for e-mail
 delivery.
@@ -373,8 +370,8 @@ zone was intentionally chosen in order to make it clear that such
 a configuration is allowed, is consistent with this specification
 and facilitates the use of private namespaces named under such a
 top-level domain with less ambiguity than might otherwise occur.
-This document does not provide any corresponding operational direction
-to the IANA, however.
+This document does not provide any operational direction to the
+IANA, however.
 
 --- back
 
