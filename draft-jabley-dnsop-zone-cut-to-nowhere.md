@@ -57,8 +57,8 @@ informative:
     author:
       -
         ins: D. Byrne
-        org: Talking Heads
         name: David Byrne
+        org: Talking Heads
     seriesInfo:
       'Album': Little Creatures
     date: 1985-06-03
