@@ -168,8 +168,8 @@ includes the child zone in its namespace.
 ~~~~
 
 An NS RRSet in a parent zone which includes multiple NS resource
-records is not a delegation to nowhere, even if the target of one
-of the NS resource records within the RRSet has an empty target.
+records is not a delegation to nowhere, even if one of the NS
+resource records within the RRSet has an empty target.
 
 ~~~~
         KITTEN  3600  IN  NS  A.CAT-SERVERS.EXAMPLE.
@@ -178,11 +178,11 @@ of the NS resource records within the RRSet has an empty target.
                           NS  C.CAT-SERVERS.EXAMPLE.
 ~~~~
 
-This NS RRSet as a whole does not encode a delegation to nowhere,
-since other NS resource records exist in addition to the record
-marked in the example as unusual. This configuration may have some
-meaning to someone, however, and is specifically not prohibited by
-this specification.
+This NS RRSet does not encode a delegation to nowhere, since other
+NS resource records exist in addition to the record with the empty
+target (marked with a comment as "unusual"). This configuration may
+have some other meaning in a different context, however, and is
+specifically not prohibited by this specification.
 
 # Interpreting a Referral to Nowhere
 
