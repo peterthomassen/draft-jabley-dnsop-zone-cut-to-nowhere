@@ -59,6 +59,8 @@ informative:
         ins: D. Byrne
         org: Talking Heads
         name: David Byrne
+    seriesInfo:
+      'Album': Little Creatures
     date: 1985-06-03
 
 --- abstract
@@ -79,13 +81,13 @@ The DNS protocol, as originally specified in {{!RFC1034}} and
 that is separated into zones. The boundary between a parent zone
 and a child zone is indicated using a zone cut. Zone cuts are
 specified using specific resource records which are published within
-the parent and child zones, and are revealed during DNS resolution
+the parent and child zones and are revealed during DNS resolution
 by referral responses from nameservers.
 
-Private namespaces also exist in the DNS. A user of a private network
-might be able to resolve names using local DNS infrastructure that
-are not visible to other users of other networks. This is often an
-intentional and deliberate configuration by network operators. For
+Private namespaces also exist. A user of a private network might
+be able to resolve names using local DNS infrastructure that are
+not visible to other users of other networks. This is often an
+intentional and deliberate configuration by network operators, for
 example to provide name resolution for internal, private services
 that are not available to users of other networks.
 
@@ -104,11 +106,10 @@ positive response from an internal nameserver for the same name as
 bogus, preventing the response from being used by an application.
 
 This document provides a means of signalling the existence of a
-zone cut in a namespace which does not include the corresponding
-child zone, in order to eliminate this ambiguity. We refer to this
-type of zone cut as a "zone cut to nowhere" and introduce the
-corresponding terms "delegation to nowhere" and "referral to nowhere"
-that are defined in {{definitions}}.
+zone cut in a namespace in circumstances where the child zone only
+exists in different namespaces. We refer to this type of zone cut
+as a "zone cut to nowhere" and introduce the corresponding terms
+"delegation to nowhere" and "referral to nowhere" in {{definitions}}.
 
 # Conventions and Definitions {#definitions}
 
@@ -117,18 +118,17 @@ that are defined in {{definitions}}.
 This document uses DNS terminology as described in {{!RFC9499}}.
 Familiarity with terms defined in that document is assumed.
 
-This document also uses the following terms which are not thought
-to be in common usage.
+This document also uses the following new terms:
 
-1. "Zone cut to nowhere" -- a zone cut (q.v.) where the parent zone
+1. "Zone cut to nowhere" -- a zone cut where the parent zone
 and the child zone are provisioned in different namespaces. A zone
 cut to nowhere is a signal provided by the administrator of a parent
 zone that a child zone exists, but is not able to be used in the
 DNS namespace of the parent.
-2. "Delegation to nowhere" -- a delegation (q.v.) from a parent to
+2. "Delegation to nowhere" -- a delegation from a parent to
 a child across a zone cut to nowhere.
 3. "Referral to nowhere", "Referral response to nowhere" -- a DNS
-response (q.v.) received from a nameserver that reveals the existence
+response received from a nameserver that reveals the existence
 of a delegation to nowhere.
 
 # Publishing a Delegation to Nowhere
@@ -136,16 +136,19 @@ of a delegation to nowhere.
 A zone cut to nowhere is implemented in a parent zone using a single
 NS resource record with an empty target (an empty NSDNAME, using
 the terminology of {{!RFC1035}}). A zone cut to nowhere between the
-parent zone `EXAMPLE.ORG` and the child zone `CHILD.EXAMPLE.ORG`
+parent zone `EXAMPLE.ORG` and the child zone `DUCKLING.EXAMPLE.ORG`
 with a TTL of 3600 seconds would be described in zone file syntax
 as follows:
 
 ~~~~
-; zone data published in an external nameserver
-$ORIGIN EXAMPLE.ORG.
+        ; zone data published in an external nameserver
 
-; the zone CHILD.EXAMPLE.ORG exists, but in another namespace
-CHILD  3600  IN  NS  .
+        $ORIGIN EXAMPLE.ORG.
+
+        ; the zone DUCKLING.EXAMPLE.ORG exists, but in another
+        ; namespace
+
+        DUCKLING  3600  IN  NS  .
 ~~~~
 
 A zone cut to nowhere may also be provisioned as a secure delegation.
@@ -157,20 +160,29 @@ includes the child zone in its namespace.
 ~~~~
         $ORIGIN EXAMPLE.ORG.
 
-        ; the signed zone CHILD.EXAMPLE.ORG exists,
+        ; the signed zone PUPPY.EXAMPLE.ORG exists,
         ; but in another namespace
 
-        CHILD  3600  IN  DS  [...]
-        CHILD            NS  .
+        PUPPY  3600  IN  DS  [...]
+        PUPPY            NS  .
 ~~~~
 
 An NS RRSet in a parent zone which includes multiple NS resource
 records is not a delegation to nowhere, even if the target of one
-of the NS resource records within the RRSet has an empty target
-(NSDNAME). That NS resource record has no meaning in as a member
-of a broader RRSet and serves no obvious, useful purpose. However,
-such a configuration MAY exist, and is not specifically not prohibited
-by this specification.
+of the NS resource records within the RRSet has an empty target.
+
+~~~~
+        KITTEN  3600  IN  NS  A.CAT-SERVERS.EXAMPLE.
+                      IN  NS  B.CAT-SERVERS.EXAMPLE.
+                      IN  NS  .                        ; unusual
+                      IN  NS  C.CAT-SERVERS.EXAMPLE.
+~~~~
+
+This NS RRSet as a whole does not encode a delegation to nowhere,
+since other NS resource records exist in addition to the record
+marked in the example as unusual. This configuration may have some
+meaning to someone, however, and is specifically not prohibited by
+this specification.
 
 # Interpreting a Referral to Nowhere
 
@@ -238,21 +250,21 @@ network can resolve names in the `CORP.EXAMPLE.COM` domain.
                      NS    NS1
                      NS    NS2
 
-        NS1          A     192.168.1.37
+        NS1          A     198.51.100.37
                      AAAA  2001:db8:2:1::2c
 
-        NS2          A     192.168.3.56
+        NS2          A     203.0.113.56
         NS2          AAAA  2001:db8:2:3::2d
 
         ; the internal intranet web server is INTRANET.CORP.EXAMPLE.COM
 
-        INTRANET     A     192.168.1.74
+        INTRANET     A     198.51.100.74
                      AAAA  2001:db8:2:1::f8
 
         ; the management address of an internal network device known
         ; as BACKBONE-SW.CORP.EXAMPLE.COM
 
-        BACKBONE-SW  A     192.168.2.65
+        BACKBONE-SW  A     198.51.100.65
 ~~~~
 
 The company publishes an EXAMPLE.COM zone on nameservers that are
