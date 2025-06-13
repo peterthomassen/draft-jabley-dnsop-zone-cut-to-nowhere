@@ -65,15 +65,15 @@ nameservers.
 
 Private namespaces also exist in the DNS. A user of a private network might be able
 to resolve names using local DNS infrastructure that are not visible to other users
-of different networks. This is often an intentional and deliberate configuration by
-network operators, for example to provide name resolution for internal, private
+of other networks. This is often an intentional and deliberate configuration by
+network operators. For example to provide name resolution for internal, private
 services that are not available to users of other networks.
 
 When a device or application uses the DNS protocol to resolve both internal names
 and external names published in the global DNS namespace, ambiguity can result. For
-example, DNS responses from Internet-facing nameservers might indicate that a
+example, DNS responses from Internet-reachable nameservers might indicate that a
 particular name published in an internal namespace does not exist, while an internal
-nameserver might respond differently. Since mobile devices can attach to different
+nameserver might be configured to respond differently. Since mobile devices can attach to different
 networks and can cache DNS responses obtained from different namespaces, this ambiguity
 can cause headaches. A DNSSEC-aware resolver on a mobile device might cache a signed,
 negative response from an external nameserver for a particular name, for example, and
@@ -83,16 +83,16 @@ name as bogus, preventing the response from being used by an application.
 This document provides a means of signalling the existence of a zone cut in a
 namespace which does not include the corresponding child zone, in order to eliminate
 this ambiguity. We refer to this type of zone cut as a "zone cut to nowhere" and
-introduce the corresponding terms "delegation to nowhere" and "referral to nowhere".
+introduce the corresponding terms "delegation to nowhere" and "referral to nowhere" that are defined in {{definitions}}.
 
-# Conventions and Definitions
+# Conventions and Definitions {#definitions}
 
 {::boilerplate bcp14-tagged}
 
 This document uses DNS terminology as described in {{!RFC9499}}. Familiarity with
 terms defined in that document is assumed.
 
-This document uses the following phrases which are not commonly used.
+This document also uses the following terms which are not thought to be in common usage.
 
 1. "Zone cut to nowhere" -- a zone cut (q.v.) where the parent zone and the child
 zone are provisioned in different namespaces. A zone cut to nowhere is a signal
@@ -100,15 +100,15 @@ provided by the administrator of a parent zone that a child zone exists, but is
 not able to be used in the DNS namespace of the parent.
 2. "Delegation to nowhere" -- a delegation (q.v.) from a parent to a child across
 a zone cut to nowhere.
-3. "Referral to nowhere", "Referral response to nowhere" -- DNS response (q.v.) received from a nameserver that
+3. "Referral to nowhere", "Referral response to nowhere" -- a DNS response (q.v.) received from a nameserver that
 reveals the existence of a delegation to nowhere.
 
 # Publishing a Delegation to Nowhere
 
 A zone cut to nowhere is implemented in a parent zone using a single NS resource record
 with an empty target (an empty NSDNAME, using the terminology of {{!RFC1035}}). A
-zone cut to nowhere between the parent zone EXAMPLE.ORG and the child zone
-INTERNAL.EXAMPLE.ORG with a TTL of 3600 seconds would be described in zone file syntax as follows:
+zone cut to nowhere between the parent zone `EXAMPLE.ORG` and the child zone
+`CHILD.EXAMPLE.ORG` with a TTL of 3600 seconds would be described in zone file syntax as follows:
 
 ~~~~
 ; zone data published in an external nameserver
@@ -133,15 +133,15 @@ CHILD            NS  .
 
 An NS RRSet in a parent zone which includes multiple NS resource records is not a
 delegation to nowhere, even if the target of one of the NS resource records within
-the RRSet has an empty target (NSDNAME); that NS resource record has no meaning
-in that situation and serves no obvious, useful purpose. However, such a configuration
+the RRSet has an empty target (NSDNAME). That NS resource record has no meaning
+in as a member of a broader RRSet and serves no obvious, useful purpose. However, such a configuration
 MAY exist, and is not specifically not prohibited by this specification.
 
 # Interpreting a Referral to Nowhere
 
 No special processing is necessary in order to interpret a referral response to nowhere.
 Individual RRSets present in a referral response to nowhere can safely be
-interpreted in an identical fashion to any other referral response where the
+interpreted and processed in an identical fashion to any other referral response where the
 authoritative servers for the child zone cannot themselves be resolved, and
 hence cannot be reached.
 
@@ -154,10 +154,13 @@ provisioned in the global DNS namespace to signal that the private namespace exi
 A secure delegation to nowhere MAY be provisioned in the global DNS namespace
 if the child zone exists in another namespace and the keys used for signing in the
 child zone are known to the administrator of the parent zone. In the case where
-different child zones are known to exist in separately-administered namespace,
-a secure delegation MUST NOT be provisioned in the global DNS namespace.
+different child zones are known to exist in multiple, separately-administered namespaces,
+a secure delegation MUST NOT be used.
 
-A delegation to nowhere MAY be provisioned in any zone in the global DNS namespace.
+A delegation to nowhere MAY be provisioned in any zone.
+
+The use of a delegation to nowhere in this document is described for DNS resource records,
+queries and responses using the IN class only.
 
 # Examples
 
@@ -327,7 +330,7 @@ The phrase "delegation to nowhere" was inspired by a misremebered title of a nov
 supernatural and mortal realms and time travel using alcohol and imagined magical abilities. This seemed like
 a tremendously useful analogue to the problem of provisioning overlapping namespaces in DNS. Unfortunately,
 it appears that Tim Powers wrote no
-such book, although he did publish the novel "Three Days to Never" in 2006 and many of his novels
-feature ambiguous realities, the supernatural and excessive drinking. Memory is a
+such book, although he did publish the novel "Three Days to Never" in 2006 and many of his novels do
+feature ambiguity, the supernatural and excessive drinking. Memory is a
 tricky thing. The song "Road to Nowhere" from the 1985 Talking Heads album "Little Creatures" would perhaps have
 been a better inspiration for the terminology. It's a shame that's not what happened.
