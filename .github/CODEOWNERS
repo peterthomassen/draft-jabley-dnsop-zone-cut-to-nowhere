@@ -1,0 +1,3 @@
+# Automatically generated CODEOWNERS
+# Regenerate with `make update-codeowners`
+draft-jabley-dnsop-zone-cut-to-nowhere.md jabley@cloudflare.com warren@kumari.net ietf@hardakers.net
