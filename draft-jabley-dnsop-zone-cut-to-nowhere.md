@@ -90,7 +90,7 @@ introduce the corresponding terms "delegation to nowhere" and "referral to nowhe
 
 {::boilerplate bcp14-tagged}
 
-This document uses DNS terminology as described in {{!RFC9949}}. Familiarity with
+This document uses DNS terminology as described in {{!RFC9499}}. Familiarity with
 terms defined in that document is assumed.
 
 This document uses the following phrases which are not commonly used.
