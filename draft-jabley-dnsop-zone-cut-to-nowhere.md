@@ -9,8 +9,8 @@ submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 #date:
 consensus: true
 v: 3
-area: Operations
-workgroup: dnsop
+area: "Operations and Management"
+workgroup: "Domain Name System Operations"
 keyword:
  - DNS
  - DNSSEC
@@ -18,12 +18,12 @@ keyword:
  - delegation
  - referral
 venue:
-  group: dnsop
-  type: Working Group
-  mail: dnsop@ietf.org
-#  arch: https://example.com/WG
-  github: ableyjoe/draft-jabley-dnsop-zone-cut-to-nowhere
-#  latest: https://example.com/LATEST
+  group: "Domain Name System Operations"
+  type: "Working Group"
+  mail: "dnsop@ietf.org"
+  arch: "https://mailarchive.ietf.org/arch/browse/dnsop/"
+  github: "ableyjoe/draft-jabley-dnsop-zone-cut-to-nowhere"
+  latest: "https://ableyjoe.github.io/draft-jabley-dnsop-zone-cut-to-nowhere/draft-jabley-dnsop-zone-cut-to-nowhere.html"
 
 author:
  -
@@ -38,7 +38,7 @@ author:
     fullname: Wes Hardaker
     organization: USC/ISI
     email: ietf@hardakers.net
-    
+
 
 normative:
 
