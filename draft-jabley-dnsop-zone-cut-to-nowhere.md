@@ -43,6 +43,23 @@ author:
 normative:
 
 informative:
+  Powers2006:
+    title: Three Days to Never
+    author:
+      -
+        ins: T. Powers
+        name: Tim Powers
+    seriesInfo:
+      ISBN: 978-0380976539
+    date: 2006-08-08
+  Byrne1985:
+    title: Road to Nowhere
+    author:
+      -
+        ins: D. Byrne
+        org: Talking Heads
+        name: David Byrne
+    date: 1985-06-03
 
 --- abstract
 
@@ -377,9 +394,10 @@ which characters deal with ambiguous realities by way of supernatural
 sensitivity, time travel and alcohol.  This seemed like a good
 metaphor for the problem of provisioning overlapping namespaces in
 the DNS. Unfortunately, it appears that Tim Powers wrote no such
-book, although he did publish the novel "Three Days to Never" in
-2006 and many of his novels do feature ambiguity, the supernatural
-and excessive drinking. Memory is a tricky thing. The song "Road
-to Nowhere" from the 1985 Talking Heads album "Little Creatures"
-would perhaps have been a better inspiration for the terminology.
-It's a shame that's not what happened.
+book, although he did publish the novel "Three Days to Never"
+{{Powers2006}} and many of his novels do feature ambiguity, the
+supernatural and excessive drinking. Memory is a tricky thing. The
+song "Road to Nowhere" {Byrne1985} from the 1985 Talking Heads album
+"Little Creatures" would perhaps have been a better inspiration for
+the terminology.  It's a shame that's not what happened.
+
