@@ -19,41 +19,50 @@
 # Change the file extension to match the format (.xml for XML, etc...)
 #
 ###
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
-category: info
+title: "Signalling a Zone Cut to Nowhere in the DNS"
+#abbrev: "TODO - Abbreviation"
+category: std
 
-docname: draft-todo-yourname-protocol-latest
+docname: draft-jabley-dnsop-zone-cut-to-nowhere-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
-number:
-date:
+#number:
+#date:
 consensus: true
 v: 3
-area: AREA
-workgroup: WG Working Group
+area: Operations
+workgroup: dnsop
 keyword:
- - next generation
- - unicorn
- - sparkling distributed ledger
+ - DNS
+ - DNSSEC
+ - zone cut
+ - delegation
+ - referral
 venue:
-  group: WG
+  group: dnsop
   type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: USER/REPO
-  latest: https://example.com/LATEST
+  mail: dnsop@ietf.org
+#  arch: https://example.com/WG
+  github: ableyjoe/draft-jabley-dnsop-zone-cut-to-nowhere
+#  latest: https://example.com/LATEST
 
 author:
  -
-    fullname: Your Name Here
-    organization: Your Organization Here
-    email: your.email@example.com
+    fullname: Joe Abley
+    organization: Cloudflare
+    email: jabley@cloudflare.com
+ -
+    fullname: Warren Kumari
+    organization: Google, Inc.
+    email: warren@kumari.net
+ -
+    fullname: Wes Hardaker
+    organization: USC/ISI
+    email: ietf@hardakers.net
+    
 
 normative:
 
 informative:
-
-...
 
 --- abstract
 
