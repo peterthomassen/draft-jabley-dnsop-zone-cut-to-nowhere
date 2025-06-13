@@ -347,9 +347,10 @@ different, non-cooperating administrators.
 
 This document updates {{Section 3.3.11 of RFC1035}} as follows:
 
-> `NSDNAME` MAY be specified as a single, empty label to indicate
-> that a zone cut exists but that the authoritative nameservers for
-> the child zone are not specified.
+> `NSDNAME` MAY be specified as a single, zero-length label. An
+> NS RRSet that consists of a single NS resource record with empty
+> `NSDNAME` is used to indicate that a zone cut exists without
+> indicating any authoritative nameservers for the child zone.
 
 # Other Uses of the Empty Name in the DNS {#other_uses}
 
