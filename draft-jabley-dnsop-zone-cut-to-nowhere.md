@@ -330,5 +330,5 @@ a tremendously useful analogue to the problem of provisioning overlapping namesp
 it appears that Tim Powers wrote no
 such book, although he did publish the novel "Three Days to Never" in 2006 and many of his novels
 feature ambiguous realities, the supernatural and excessive drinking. Memory is a
-tricky thing.
-
+tricky thing. The song "Road to Nowhere" from the 1985 Talking Heads album "Little Creatures" would perhaps have
+been a better inspiration for the terminology. It's a shame that's not what happened.
