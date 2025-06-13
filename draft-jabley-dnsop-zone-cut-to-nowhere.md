@@ -333,7 +333,7 @@ different, non-cooperating administrators.
 
 # Updates to RFC 1035
 
-This document updates {{!section 3.3.11 of RFC1035}} as follows:
+This document updates {{Section 3.3.11 of RFC1035}} as follows:
 
 > `NSDNAME` MAY be specified as a single, empty label to indicate
 > that a zone cut exists but that the authoritative nameservers for
