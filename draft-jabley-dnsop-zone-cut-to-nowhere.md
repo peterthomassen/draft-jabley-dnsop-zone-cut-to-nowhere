@@ -420,7 +420,7 @@ sensitivity, time travel and alcohol.  This seemed like a good
 metaphor for the problem of provisioning overlapping namespaces in
 the DNS. Unfortunately, it appears that Tim Powers wrote no such
 book, although he did publish the novel "Three Days to Never"
-{{Powers2006}} and many of his novels do feature ambiguity, the
+{{Powers2006}} and much of his writing features ambiguity, the
 supernatural and excessive drinking. Memory is a tricky thing. The
 song "Road to Nowhere" {{Byrne1985}} from the 1985 Talking Heads
 album "Little Creatures" would perhaps have been a better inspiration
