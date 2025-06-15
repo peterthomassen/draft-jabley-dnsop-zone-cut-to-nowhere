@@ -221,10 +221,12 @@ resolution protocols. In some cases, those name resolution protocols
 are anchored in a specific domain that is reserved for their use,
 and hence not used in the DNS. Examples of such reservations are
 the LOCAL top-level domain reserved for use by Multicast DNS
-{{RFC6762}} and the ALT top-level domain reserved use by non-DNS
-resolution protocols {{RFC9476}}. Such domains that are intended
-for use with resolution protocols other than the DNS SHOULD NOT be
-provisioned in the DNS as delegations to nowhere.
+{{?RFC6762}} and the ALT top-level domain reserved use by non-DNS
+resolution protocols {{?RFC9476}}. Domains that are not intended
+for use with the DNS as their resolution protocol SHOULD NOT be
+provisioned in the DNS as delegations to nowhere, since there is
+no DNS namespace ambiguity that such a configuration could help
+with.
 
 # Examples
 
