@@ -218,8 +218,8 @@ systems, for names that are syntactically equivalent to domain names
 in the DNS. In some cases, names resolved by those non-DNS protocols
 are anchored in a specific domain that is consequently reserved for
 their use in the DNS, to avoid name collisions.  Examples of such
-reservations in the DNS are the LOCAL top-level domain reserved for
-use by Multicast DNS {{?RFC6762}} and the ALT top-level domain
+reservations in the DNS are the `LOCAL` top-level domain reserved
+for use by Multicast DNS {{?RFC6762}} and the `ALT` top-level domain
 reserved use in general for non-DNS resolution protocols {{?RFC9476}}.
 Domains that are not intended for use with the DNS as their resolution
 protocol SHOULD NOT be provisioned in the DNS as delegations to
@@ -280,9 +280,9 @@ network can resolve names in the `CORP.EXAMPLE.COM` domain.
         BACKBONE-SW  A     198.51.100.65
 ~~~~
 
-The company publishes an EXAMPLE.COM zone on nameservers that are
+The company publishes an `EXAMPLE.COM` zone on nameservers that are
 general reachable over the Internet -- that is, the nameservers are
-reachable and the COM zone returns referrals for the EXAMPLE.COM
+reachable and the `COM` zone returns referrals for the `EXAMPLE.COM`
 zone to those nameservers. The EXAMPLE.COM zone includes names that
 the company wants clients to be able to resolve regardless of what
 network they are connected to.
@@ -332,16 +332,16 @@ network they are connected to.
 
 ## General Purpose Top-Level Domain for Internal Namespaces
 
-Suppose it has been decided that the top-level domain INTERNAL be
+Suppose it has been decided that the top-level domain `INTERNAL` be
 reserved for use in private namespaces. The root zone of the global
 DNS is signed using DNSSEC {{!RFC4033}}; that is, DNSSEC-specific
 RRSets are published in the root zone that allow DNSSEC-aware
 resolvers to be sure with cryptographic certainty whether particular
 top-level domains exist in the public namespace.
 
-A delegation to nowhere for the INTERNAL top-level domain in the
+A delegation to nowhere for the `INTERNAL` top-level domain in the
 root zone of the global DNS namespace would provide an unambiguous
-signal to resolvers that INTERNAL does exist in other namespaces.
+signal to resolvers that `INTERNAL` does exist in other namespaces.
 An insecure delegation to nowhere is appropriate in this example
 since there is no single trust anchor that could be used to provide
 a secure delegation to zones in multiple namespaces that have
@@ -405,8 +405,8 @@ better security properties than configurations that are ambiguous.
 
 This document has no IANA actions.
 
-The example of the designated top-level domain INTERNAL being
-provisioned as a delegation of INTERNAL to nowhere from the root
+The example of the designated top-level domain `INTERNAL` being
+provisioned as a delegation of `INTERNAL` to nowhere from the root
 zone was intentionally chosen in order to make it clear that such
 a configuration is allowed, is consistent with this specification
 and facilitates the use of private namespaces named under such a
@@ -418,7 +418,7 @@ IANA, however.
 
 # Experiments {#experiments}
 
-Wes should commit acts of science, here.
+Wes has committed acts of science. He will describe them here.
 
 # Acknowledgments
 {:numbered="false"}
