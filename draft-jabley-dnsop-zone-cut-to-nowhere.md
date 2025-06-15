@@ -81,10 +81,11 @@ The DNS protocol, as originally specified in {{!RFC1034}} and
 that is separated into zones. The boundary between a parent zone
 and a child zone is indicated using a zone cut. Zone cuts are
 specified using specific resource records which are published within
-the parent and child zones and are revealed during DNS resolution
-by referral responses from nameservers.
+the parent and child zones; the parent-side resource records are
+revealed during DNS resolution by way of referral responses from
+nameservers.
 
-Private namespaces also exist. A user of a private network might
+Private DNS namespaces also exist. A user of a private network might
 be able to resolve names using local DNS infrastructure that are
 not visible to other users of other networks. This is often an
 intentional and deliberate configuration by network operators, for
@@ -101,15 +102,16 @@ Since mobile devices can attach to different networks and can cache
 DNS responses obtained from different namespaces, this ambiguity
 can cause headaches. A DNSSEC-aware resolver on a mobile device
 might cache a signed, negative response from an external nameserver
-for a particular name, for example, and might treat a subsequent
-positive response from an internal nameserver for the same name as
-bogus, preventing the response from being used by an application.
+for a particular name and might treat a subsequent, positive response
+from an internal nameserver for the same name as bogus, preventing
+the response from being used by an application.
 
 This document provides a means of signalling the existence of a
 zone cut in a namespace in circumstances where the child zone only
-exists in different namespaces. We refer to this type of zone cut
-as a "zone cut to nowhere" and introduce the corresponding terms
-"delegation to nowhere" and "referral to nowhere" in {{definitions}}.
+exists in a different namespace from the parent. We refer to this
+type of zone cut as a "zone cut to nowhere" and introduce the
+corresponding terms "delegation to nowhere" and "referral to nowhere"
+in {{definitions}}.
 
 # Conventions and Definitions {#definitions}
 
@@ -134,11 +136,11 @@ of a delegation to nowhere.
 # Publishing a Delegation to Nowhere
 
 A zone cut to nowhere is implemented in a parent zone using a single
-NS resource record with an empty target (an empty NSDNAME, using
-the terminology of {{!RFC1035}}). A zone cut to nowhere between the
-parent zone `EXAMPLE.ORG` and the child zone `DUCKLING.EXAMPLE.ORG`
-with a TTL of 3600 seconds would be described in zone file syntax
-as follows:
+NS resource record with an empty target (an empty NSDNAME, in the
+parlance of {{!RFC1035}}). A zone cut to nowhere between the parent
+zone `EXAMPLE.ORG` and the child zone `DUCKLING.EXAMPLE.ORG` with
+a TTL of 3600 seconds would be described in zone file syntax as
+follows:
 
 ~~~~
         ; zone data published in an external nameserver
@@ -182,7 +184,7 @@ This NS RRSet does not encode a delegation to nowhere, since other
 NS resource records exist in addition to the record with the empty
 target (marked with a comment as "unusual"). This configuration may
 have some other meaning in a different context, however, and is
-specifically not prohibited by this specification.
+specifically not addressed by this specification.
 
 # Interpreting a Referral to Nowhere
 
@@ -211,7 +213,18 @@ A delegation to nowhere MAY be provisioned in any zone.
 
 The use of a delegation to nowhere in this document is described
 for DNS resource records, queries and responses using the IN class
-only.
+only. Use of this mechanism using other classes is not addressed by
+this specification.
+
+The namespace used by the DNS is also used by other, different name
+resolution protocols. In some cases, those name resolution protocols
+are anchored in a specific domain that is reserved for their use,
+and hence not used in the DNS. Examples of such reservations are
+the LOCAL top-level domain reserved for use by Multicast DNS
+{{RFC6762}} and the ALT top-level domain reserved use by non-DNS
+resolution protocols {{RFC9476}}. Such domains that are intended
+for use with resolution protocols other than the DNS SHOULD NOT be
+provisioned in the DNS as delegations to nowhere.
 
 # Examples
 
@@ -413,16 +426,20 @@ Wes should commit acts of science, here.
 The authors stand ready to acknowledge all contributions from their
 friends and colleagues.
 
-The phrase "delegation to nowhere" was inspired by a misremebered
+The phrase "delegation to nowhere" was inspired by the misremebered
 title of a novel by Tim Powers entitled "Two Days to Nowhere", in
 which characters deal with ambiguous realities by way of supernatural
 sensitivity, time travel and alcohol.  This seemed like a good
 metaphor for the problem of provisioning overlapping namespaces in
-the DNS. Unfortunately, it appears that Tim Powers wrote no such
-book, although he did publish the novel "Three Days to Never"
-{{Powers2006}} and much of his writing features ambiguity, the
-supernatural and excessive drinking. Memory is a tricky thing. The
-song "Road to Nowhere" {{Byrne1985}} from the 1985 Talking Heads
+the DNS.
+
+Unfortunately, it appears that Tim Powers wrote no such book,
+although he did publish the similarly-named novel "Three Days to
+Never" {{Powers2006}} which is perhaps what I was thinking of. And
+it's certainly true that much of his writing features ambiguity,
+the supernatural and excessive drinking. Memory is a tricky thing.
+
+The song "Road to Nowhere" {{Byrne1985}} from the 1985 Talking Heads
 album "Little Creatures" would perhaps have been a better inspiration
 for the terminology.  It's a shame that's not what happened.
 
