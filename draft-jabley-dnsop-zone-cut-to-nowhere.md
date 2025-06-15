@@ -199,34 +199,32 @@ cannot be reached.
 
 When a child zone is known to exist in another namespace, and when
 that other namespace is intended for use with the DNS, a delegation
-to nowhere MAY be provisioned in the global DNS namespace to signal
-that the private namespace exists.
+to nowhere MAY be provisioned in the parent zone to signal that the
+child zone exists in some other namespace. In such circumstances
+the parent zone MAY be the root zone, or any other zone.
 
-A secure delegation to nowhere MAY be provisioned in the global DNS
-namespace if the child zone exists in another namespace and the
-keys used for signing in the child zone are known to the administrator
-of the parent zone. In the case where different child zones are
-known to exist in multiple, separately-administered namespaces, a
-secure delegation MUST NOT be used.
-
-A delegation to nowhere MAY be provisioned in any zone.
+A secure delegation to nowhere MAY be provisioned if the keys used
+for signing in the child zone are known to the administrator of the
+parent zone. In the case where different child zones are known to
+exist in multiple, separately-administered namespaces, a secure
+delegation MUST NOT be used.
 
 The use of a delegation to nowhere in this document is described
-for DNS resource records, queries and responses using the IN class
-only. Use of this mechanism using other classes is not addressed by
-this specification.
+for the IN class only. Use of this mechanism in other classes is
+not addressed by this specification.
 
-The namespace used by the DNS is also used by other, different name
-resolution protocols. In some cases, those name resolution protocols
-are anchored in a specific domain that is reserved for their use,
-and hence not used in the DNS. Examples of such reservations are
-the LOCAL top-level domain reserved for use by Multicast DNS
-{{?RFC6762}} and the ALT top-level domain reserved use by non-DNS
-resolution protocols {{?RFC9476}}. Domains that are not intended
-for use with the DNS as their resolution protocol SHOULD NOT be
-provisioned in the DNS as delegations to nowhere, since there is
-no DNS namespace ambiguity that such a configuration could help
-with.
+Name resolution protocols other than the DNS are also used by some
+systems, for names that are syntactically equivalent to domain names
+in the DNS. In some cases, names resolved by those non-DNS protocols
+are anchored in a specific domain that is consequently reserved for
+their use in the DNS, to avoid name collisions.  Examples of such
+reservations in the DNS are the LOCAL top-level domain reserved for
+use by Multicast DNS {{?RFC6762}} and the ALT top-level domain
+reserved use in general for non-DNS resolution protocols {{?RFC9476}}.
+Domains that are not intended for use with the DNS as their resolution
+protocol SHOULD NOT be provisioned in the DNS as delegations to
+nowhere, since there is no DNS namespace ambiguity that such a
+configuration could help with.
 
 # Examples
 
