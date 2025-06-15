@@ -384,7 +384,7 @@ although it has been used as an MX target, as described in
 nowhere became prevalent, or if names related to such zone cuts
 were associated with significant traffic, some operational problem
 might result. For example, DNS software that made incompatible
-assumptions about DNS responses might fail, or unwanted traffic to
+assumptions about DNS responses might fail, or harmful traffic to
 root servers might result.
 
 Some experiments carried out by the authors to assess the likelihood
