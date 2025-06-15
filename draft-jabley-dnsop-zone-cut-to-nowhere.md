@@ -205,9 +205,9 @@ the parent zone MAY be the root zone, or any other zone.
 
 A secure delegation to nowhere MAY be provisioned if the keys used
 for signing in the child zone are known to the administrator of the
-parent zone. In the case where different child zones are known to
-exist in multiple, separately-administered namespaces, a secure
-delegation MUST NOT be used.
+parent zone. In the case where differently-signed (or unsigned)
+child zones are known to exist in different namespaces, a secure
+delegation SHOULD NOT be used.
 
 The use of a delegation to nowhere in this document is described
 for the IN class only. Use of this mechanism in other classes is
