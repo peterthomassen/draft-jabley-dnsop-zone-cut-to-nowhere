@@ -376,11 +376,11 @@ domain name does not accept e-mail. In effect, the empty field is
 used to indicate that there is no host available to use for e-mail
 delivery.
 
-In addition, {{?RFC2782}} states that an SVR 'Target of "." means that the
-service is decidedly not available at this domain.'. {{?RFC9460}}, Section 2.5
-(Special Handling of "." in TargetName) expands on this, including noting
-that for 'For AliasMode SVCB RRs, a TargetName of "." indicates that the
-service is not available or does not exist.'
+In {{?RFC2782}} an SRV 'Target of "." means that the service is
+decidedly not available at this domain.'. {{?RFC9460 Section 2.5}}
+(Special Handling of "." in TargetName) expands on this and also
+notes that for 'For AliasMode SVCB RRs, a TargetName of "." indicates
+that the service is not available or does not exist.'
 
 # Operational Considerations
 
