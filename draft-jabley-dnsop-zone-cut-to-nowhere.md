@@ -52,6 +52,7 @@ informative:
     seriesInfo:
       ISBN: 978-0380976539
     date: 2006-08-08
+    rc: William Morrow & Company
   Byrne1985:
     title: Road to Nowhere
     author:
@@ -59,8 +60,7 @@ informative:
         ins: D. Byrne
         name: David Byrne
         org: Talking Heads
-    seriesInfo:
-      'Album': Little Creatures
+    rc: from the album "Little Creatures", Sire Records, released 1985-06-10
     date: 1985-06-03
 
 --- abstract
