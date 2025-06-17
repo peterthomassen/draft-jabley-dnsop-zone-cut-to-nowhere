@@ -49,10 +49,8 @@ informative:
       -
         ins: T. Powers
         name: Tim Powers
-    seriesInfo:
-      ISBN: 978-0380976539
     date: 2006-08-08
-    rc: William Morrow & Company
+    rc: William Morrow & Company, ISBN 978-0380976539
   Byrne1985:
     title: Road to Nowhere
     author:
