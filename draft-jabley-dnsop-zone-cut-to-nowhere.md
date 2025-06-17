@@ -388,9 +388,9 @@ be interpreted as the corresponding function not being available.
 # Operational Considerations
 
 The empty name is not known to have been widely used as an NS target,
-although it has been used as an MX target, as described in
-{{other_uses}}. It is a reasonable concern that if delegations to
-nowhere became prevalent, or if names related to such zone cuts
+although it has been used with other resource records, as described
+in {{other_uses}}. It is a reasonable concern that if delegations
+to nowhere became prevalent, or if names related to such zone cuts
 were associated with significant traffic, some operational problem
 might result. For example, DNS software that made incompatible
 assumptions about DNS responses might fail, or harmful traffic to
