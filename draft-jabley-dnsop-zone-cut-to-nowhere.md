@@ -375,10 +375,11 @@ used to indicate that there is no host available to use for e-mail
 delivery.
 
 In {{?RFC2782}} an SRV 'Target of "." means that the service is
-decidedly not available at this domain.'. {{?Section 2.5 of RFC9460}}
-(Special Handling of "." in TargetName) expands on this and also
-notes that for 'For AliasMode SVCB RRs, a TargetName of "." indicates
-that the service is not available or does not exist.'
+decidedly not available at this domain.'.
+
+{{RFC9460, Section 2.5}} notes that 'For AliasMode SVCB RRs, a
+TargetName of "." indicates that the service is not available or
+does not exist.'
 
 These uses of the empty name are conceptually consistent with the
 meaning defined in this document: that using an empty name is to
