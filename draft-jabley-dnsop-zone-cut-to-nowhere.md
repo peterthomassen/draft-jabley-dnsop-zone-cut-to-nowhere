@@ -60,7 +60,7 @@ informative:
         ins: D. Byrne
         name: David Byrne
         org: Talking Heads
-    rc: from the album "Little Creatures", Sire Records, released 1985-06-10
+    rc: from the album "Little Creatures", Sire Records
     date: 1985-06-03
 
 --- abstract
