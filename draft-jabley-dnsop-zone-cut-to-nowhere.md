@@ -375,7 +375,7 @@ used to indicate that there is no host available to use for e-mail
 delivery.
 
 In {{?RFC2782}} an SRV 'Target of "." means that the service is
-decidedly not available at this domain.'.
+decidedly not available at this domain.'
 
 {{?RFC9460, Section 2.5}} notes that 'For AliasMode SVCB RRs, a
 TargetName of "." indicates that the service is not available or
