@@ -382,6 +382,10 @@ decidedly not available at this domain.'. {{?RFC9460 Section 2.5}}
 notes that for 'For AliasMode SVCB RRs, a TargetName of "." indicates
 that the service is not available or does not exist.'
 
+These uses of the empty name are conceptually consistent with the
+meaning defined in this document: that using an empty name is to
+be interpreted as the corresponding function not being available.
+
 # Operational Considerations
 
 The empty name is not known to have been widely used as an NS target,
