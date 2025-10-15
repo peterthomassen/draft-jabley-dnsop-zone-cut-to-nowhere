@@ -39,6 +39,10 @@ author:
     fullname: Warren Kumari
     organization: Google, Inc.
     email: warren@kumari.net
+ -
+    fullname: Peter Thomassen
+    organization: deSEC
+    email: peter@desec.io
 
 normative:
 
@@ -96,18 +100,18 @@ namespace, ambiguity can result. For example, DNS responses from
 Internet-reachable nameservers might indicate that a particular
 name published in an internal DNS namespace does not exist, while an
 internal nameserver might be configured to respond differently.
-As mobile devices attach to different networks and may cache DNS
-responses obtained from different namespaces, this ambiguity can cause
-headaches. For example, a DNSSEC-aware resolver on a mobile device
+Since mobile devices can attach to different networks and may cache
+DNS responses obtained from different namespaces, this ambiguity
+can cause headaches: a DNSSEC-aware resolver on a mobile device
 might cache a signed, negative response from an external nameserver
 for a particular name and might treat a subsequent, positive response
 from an internal nameserver for the same name as bogus, preventing
 the response from being used by an application.
 
-This document provides a means of signalling the existence of a zone
-cut in a namespace in circumstances where the child zone only exists
-in a DNS namespace different from that of the parent. We refer to this
-type of zone cut as a "zone cut to nowhere" and introduce the
+This document provides a means of signalling the existence of a
+zone cut in a namespace in circumstances where the child zone only
+exists in a DNS namespace different from that of the parent. We refer
+to this type of zone cut as a "zone cut to nowhere" and introduce the
 corresponding terms "delegation to nowhere" and "referral to nowhere"
 in {{definitions}}.
 
@@ -198,7 +202,7 @@ cannot be reached.
 
 This holds as long as the root does not actually resolve to an address.
 
-[TODO] Is this guaranteed from semantic constraints?
+TODO: Is this guaranteed from semantic constraints? (NSDNAME specifieds a "host" (RFC 1035 Section 3.3.11), but neither RFC 952 Appendix A nor RFC 1123 Section 2.1 forbids empty hostnames. Also, there could be an address at the root zone apex regardless of whether "." would qualify as a hostname.) -- Question for WG: Do we need to derive this more strictly, or impose a restriction that the root apex MUST NOT have an address?
 
 # Applicability
 
@@ -213,6 +217,12 @@ for signing in the child zone are known to the administrator of the
 parent zone. In the case where differently-signed (or unsigned)
 child zones are known to exist in different namespaces, a secure
 delegation SHOULD NOT be used.
+
+The use of a delegation to nowhere in this document is described
+for the IN class only. Use of this mechanism in other classes is
+not addressed by this specification.
+
+TODO: RFC 1035 Section 2.2 says that some RRs, including NS, "will be used in all classes, and have the same format in all classes". -- Question for WG: Make these semantics special for IN, or drop the limitation?
 
 Name resolution protocols other than the DNS are also used by some
 systems, for names that are syntactically equivalent to domain names
